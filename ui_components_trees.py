@@ -8,7 +8,7 @@ class BinaryTreeFrame(StructureFrame):
     """Frame for Binary Tree operations and visualization."""
 
     def __init__(self, parent):
-        super().__init__(parent, "Binary Tree")
+        super().__init__(parent, "Árbol Binario")
         from structures import BinaryTree
         self.structure = BinaryTree()
         self.update_info()
@@ -21,9 +21,9 @@ class BinaryTreeFrame(StructureFrame):
         self.after(100, self.update_visualization)
 
     def _create_info_widgets(self):
-        self.size_var = tk.StringVar(value="Size: 0")
-        self.height_var = tk.StringVar(value="Height: 0")
-        self.root_var = tk.StringVar(value="Root: None")
+        self.size_var = tk.StringVar(value="Tamaño: 0")
+        self.height_var = tk.StringVar(value="Altura: 0")
+        self.root_var = tk.StringVar(value="Raíz: Ninguna")
 
         ttk.Label(self.info_frame, textvariable=self.size_var).pack(anchor=tk.W, padx=5, pady=2)
         ttk.Label(self.info_frame, textvariable=self.height_var).pack(anchor=tk.W, padx=5, pady=2)
@@ -34,7 +34,7 @@ class BinaryTreeFrame(StructureFrame):
         input_frame = ttk.Frame(parent_frame)
         input_frame.pack(fill=tk.X, padx=5, pady=5)
 
-        ttk.Label(input_frame, text="Value:").pack(side=tk.LEFT, padx=5)
+        ttk.Label(input_frame, text="Valor:").pack(side=tk.LEFT, padx=5)
         self.value_entry = ttk.Entry(input_frame, width=15)
         self.value_entry.pack(side=tk.LEFT, padx=5)
 
@@ -42,15 +42,15 @@ class BinaryTreeFrame(StructureFrame):
         button_frame = ttk.Frame(parent_frame)
         button_frame.pack(fill=tk.X, padx=5, pady=5)
 
-        ttk.Button(button_frame, text="Insert as Root",
+        ttk.Button(button_frame, text="Insertar raíz",
                    command=self.insert_as_root).pack(side=tk.LEFT, padx=5)
-        ttk.Button(button_frame, text="Insert Left Child",
+        ttk.Button(button_frame, text="Insertar Hijo Izquierdo",
                    command=lambda: self.insert_child(True)).pack(side=tk.LEFT, padx=5)
-        ttk.Button(button_frame, text="Insert Right Child",
+        ttk.Button(button_frame, text="Insertar Hijo Derecho",
                    command=lambda: self.insert_child(False)).pack(side=tk.LEFT, padx=5)
-        ttk.Button(button_frame, text="Delete Node",
+        ttk.Button(button_frame, text="Eliminar nodo",
                    command=self.delete_node).pack(side=tk.LEFT, padx=5)
-        ttk.Button(button_frame, text="Search",
+        ttk.Button(button_frame, text="Buscar",
                    command=self.search_value).pack(side=tk.LEFT, padx=5)
 
     def insert_as_root(self):
@@ -165,10 +165,10 @@ class BinaryTreeFrame(StructureFrame):
                 messagebox.showinfo("Search Result", f"Value {converted_value} not found in the tree")
 
     def update_info(self):
-        self.size_var.set(f"Size: {self.structure.size}")
-        self.height_var.set(f"Height: {self.structure.height}")
-        root_value = self.structure.root.data if self.structure.root else "None"
-        self.root_var.set(f"Root: {root_value}")
+        self.size_var.set(f"Tamaño: {self.structure.size}")
+        self.height_var.set(f"Altura: {self.structure.height}")
+        root_value = self.structure.root.data if self.structure.root else "Ninguno"
+        self.root_var.set(f"Raíz: {root_value}")
 
     def update_visualization(self):
         # Limpia el canvas
@@ -194,8 +194,8 @@ class BinaryTreeFrame(StructureFrame):
         node_positions = {}
 
         # Imprime información de depuración
-        print(f"Canvas size: {canvas_width}x{canvas_height}")
-        print(f"Number of levels: {max_levels}")
+        print(f"Tamaño de Canvas: {canvas_width}x{canvas_height}")
+        print(f"Número de niveles: {max_levels}")
 
         # Primero calculamos todas las posiciones de los nodos
         for level in range(max_levels):
@@ -365,7 +365,7 @@ class BinarySearchTreeFrame(StructureFrame):
     """Frame for Binary Search Tree operations and visualization."""
 
     def __init__(self, parent):
-        super().__init__(parent, "Binary Search Tree")
+        super().__init__(parent, "Árbol de búsqueda")
         from structures import BinarySearchTree
         self.structure = BinarySearchTree()
         self.update_info()
@@ -378,9 +378,9 @@ class BinarySearchTreeFrame(StructureFrame):
         self.after(100, self.update_visualization)
 
     def _create_info_widgets(self):
-        self.size_var = tk.StringVar(value="Size: 0")
-        self.height_var = tk.StringVar(value="Height: 0")
-        self.root_var = tk.StringVar(value="Root: None")
+        self.size_var = tk.StringVar(value="Tamaño: 0")
+        self.height_var = tk.StringVar(value="Altura: 0")
+        self.root_var = tk.StringVar(value="Raíz: Ninguna")
 
         ttk.Label(self.info_frame, textvariable=self.size_var).pack(anchor=tk.W, padx=5, pady=2)
         ttk.Label(self.info_frame, textvariable=self.height_var).pack(anchor=tk.W, padx=5, pady=2)
@@ -391,7 +391,7 @@ class BinarySearchTreeFrame(StructureFrame):
         input_frame = ttk.Frame(parent_frame)
         input_frame.pack(fill=tk.X, padx=5, pady=5)
 
-        ttk.Label(input_frame, text="Value:").pack(side=tk.LEFT, padx=5)
+        ttk.Label(input_frame, text="Valor:").pack(side=tk.LEFT, padx=5)
         self.value_entry = ttk.Entry(input_frame, width=15)
         self.value_entry.pack(side=tk.LEFT, padx=5)
 
@@ -399,15 +399,15 @@ class BinarySearchTreeFrame(StructureFrame):
         button_frame = ttk.Frame(parent_frame)
         button_frame.pack(fill=tk.X, padx=5, pady=5)
 
-        ttk.Button(button_frame, text="Insert", command=self.insert_value).pack(side=tk.LEFT, padx=5)
-        ttk.Button(button_frame, text="Delete", command=self.delete_value).pack(side=tk.LEFT, padx=5)
-        ttk.Button(button_frame, text="Search", command=self.search_value).pack(side=tk.LEFT, padx=5)
+        ttk.Button(button_frame, text="Insertar", command=self.insert_value).pack(side=tk.LEFT, padx=5)
+        ttk.Button(button_frame, text="Eliminar", command=self.delete_value).pack(side=tk.LEFT, padx=5)
+        ttk.Button(button_frame, text="Buscar", command=self.search_value).pack(side=tk.LEFT, padx=5)
 
     def insert_value(self):
         """Insert a value into the BST."""
         value = self.value_entry.get()
         if not value:
-            messagebox.showerror("Input Error", "Please enter a value")
+            messagebox.showerror("Input Error", "Ingrese un valor")
             return
 
         converted_value = self.convert_input_value(value)
@@ -420,55 +420,55 @@ class BinarySearchTreeFrame(StructureFrame):
             self.update_visualization()
 
             self.value_entry.delete(0, tk.END)
-            messagebox.showinfo("Insert", f"Value {converted_value} inserted in the BST")
+            messagebox.showinfo("Inserte", f"Valor {converted_value} ")
 
     def delete_value(self):
         """Delete a value from the BST."""
         if not self.structure.root:
-            messagebox.showinfo("Delete Failed", "Tree is empty.")
+            messagebox.showinfo("Error al Eliminar", "Árbol vacío.")
             return
 
         value = self.value_entry.get()
         if not value:
-            messagebox.showerror("Input Error", "Please enter the value to delete")
+            messagebox.showerror("Input Error", "Ingrese un valor")
             return
 
         converted_value = self.convert_input_value(value)
         if converted_value is not None:
             success = self.structure.delete(converted_value)
             if success:
-                messagebox.showinfo("Delete Result", f"Node with value {converted_value} deleted")
+                messagebox.showinfo("Resultado de Eliminar", f"Nodo con valor {converted_value} eliminado")
                 self.update_info()
                 self.update_visualization()
                 self.value_entry.delete(0, tk.END)
             else:
-                messagebox.showerror("Delete Error",
-                                     f"Failed to delete node with value {converted_value}. Node not found.")
+                messagebox.showerror("Error para Eliminar",
+                                     f"No se puede eliminar el nodo con valor de {converted_value}. Nodo no encontrado.")
 
     def search_value(self):
         """Search for a value in the BST."""
         if not self.structure.root:
-            messagebox.showinfo("Search Result", "Tree is empty")
+            messagebox.showinfo("Resultado de la búsqueda", "Árbol vacío")
             return
 
         value = self.value_entry.get()
         if not value:
-            messagebox.showerror("Input Error", "Please enter a value to search")
+            messagebox.showerror("Error", "Ingrese un valor")
             return
 
         converted_value = self.convert_input_value(value)
         if converted_value is not None:
             found = self.structure.search(converted_value)
             if found:
-                messagebox.showinfo("Search Result", f"Value {converted_value} found in the tree")
+                messagebox.showinfo("Resultado de la búsqueda", f"Valor {converted_value} ")
             else:
-                messagebox.showinfo("Search Result", f"Value {converted_value} not found in the tree")
+                messagebox.showinfo("Resultado de la búsqueda", f"Valor {converted_value} no encontrado")
 
     def update_info(self):
-        self.size_var.set(f"Size: {self.structure.size}")
-        self.height_var.set(f"Height: {self.structure.height}")
-        root_value = self.structure.root.data if self.structure.root else "None"
-        self.root_var.set(f"Root: {root_value}")
+        self.size_var.set(f"Tamaño: {self.structure.size}")
+        self.height_var.set(f"Altura: {self.structure.height}")
+        root_value = self.structure.root.data if self.structure.root else "Ninguno"
+        self.root_var.set(f"Raíz: {root_value}")
 
     def update_visualization(self):
         # Limpia el canvas
@@ -494,8 +494,8 @@ class BinarySearchTreeFrame(StructureFrame):
         node_positions = {}
 
         # Imprime información de depuración
-        print(f"Canvas size: {canvas_width}x{canvas_height}")
-        print(f"Number of levels: {max_levels}")
+        print(f"tamaño del canvas: {canvas_width}x{canvas_height}")
+        print(f"Número de Niveles: {max_levels}")
 
         # Primero calculamos todas las posiciones de los nodos
         for level in range(max_levels):
@@ -540,7 +540,7 @@ class BinarySearchTreeFrame(StructureFrame):
                 node_positions[node] = (x, y)
 
                 # Imprime información del nodo
-                print(f"Node at level {level}, position {i}: data={node.data}, pos=({x}, {y})")
+                print(f"Nodo en el nivel {level}, posición {i}: data={node.data}, pos=({x}, {y})")
 
         # Ahora dibujamos las conexiones primero (para que estén detrás de los nodos)
         for level in range(1, max_levels):  # Comenzamos desde el nivel 1 (los hijos de la raíz)
